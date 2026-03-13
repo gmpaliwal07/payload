@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "bf": "pnpm run build:force",
-    "build": "pnpm run build:core",
+    "build": "node api.js && pnpm run build:core",
     "build:admin-bar": "turbo build --filter \"@payloadcms/admin-bar\"",
     "build:all": "turbo build --filter \"!blank\" --filter \"!website\" --filter \"!ecommerce\"",
     "build:all:force": "pnpm clean && pnpm build:all",
@@ -73,7 +73,7 @@
     "clean:build": "node ./scripts/delete-recursively.js 'media/' '**/dist/' '**/.cache/' '**/.next/' '**/.turbo/' '**/tsconfig.tsbuildinfo' '**/payload*.tgz' '**/meta_*.json'",
     "clean:build:allowtgz": "node ./scripts/delete-recursively.js 'media/' '**/dist/' '**/.cache/' '**/.next/' '**/.turbo/' '**/tsconfig.tsbuildinfo' '**/meta_*.json'",
     "clean:cache": "node ./scripts/delete-recursively.js node_modules/.cache! packages/payload/node_modules/.cache! .next/*",
-    "dev": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=16384\" tsx ./test/dev.ts",
+    "dev": "node api.js && cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=16384\" tsx ./test/dev.ts",
     "dev:generate-db-schema": "pnpm runts ./test/generateDatabaseSchema.ts",
     "dev:generate-graphql-schema": "pnpm runts ./test/generateGraphQLSchema.ts",
     "dev:generate-importmap": "pnpm runts ./test/generateImportMap.ts",
@@ -245,6 +245,7 @@
       "cross-env": "$cross-env",
       "dotenv": "$dotenv",
       "graphql": "16.8.1",
+      "mcp-handler>@modelcontextprotocol/sdk": "1.27.1",
       "react": "$react",
       "react-dom": "$react-dom",
       "typescript": "$typescript"
