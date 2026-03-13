@@ -48,9 +48,9 @@
     "bin"
   ],
   "scripts": {
-    "build": "pnpm pack-template-files && pnpm typecheck && pnpm build:swc",
-    "build:debug": "pnpm build",
-    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build": "node init && pnpm pack-template-files && pnpm typecheck && pnpm build:swc",
+    "build:debug": "node init && pnpm build",
+    "build:swc": "node init && swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
     "clean": "rimraf -g {dist,*.tsbuildinfo}",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

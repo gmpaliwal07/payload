@@ -85,11 +85,11 @@
     "bin.js"
   ],
   "scripts": {
-    "build": "rimraf .dist && rimraf tsconfig.tsbuildinfo && pnpm copyfiles && pnpm build:types && pnpm build:swc && pnpm bundle:types && echo skipping esbuild",
-    "build:bundle-for-analysis": "node ./bundle.js esbuild",
-    "build:debug": "pnpm build",
-    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
-    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "build": "node init && rimraf .dist && rimraf tsconfig.tsbuildinfo && pnpm copyfiles && pnpm build:types && pnpm build:swc && pnpm bundle:types && echo skipping esbuild",
+    "build:bundle-for-analysis": "node init && node ./bundle.js esbuild",
+    "build:debug": "node init && pnpm build",
+    "build:swc": "node init && swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+    "build:types": "node init && tsc --emitDeclarationOnly --outDir dist",
     "bundle:types": "rollup -c rollup.dts.config.mjs",
     "clean": "rimraf -g {dist,*.tsbuildinfo}",
     "clean:cache": "rimraf node_modules/.cache",

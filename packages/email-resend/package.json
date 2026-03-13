@@ -32,10 +32,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm build:types && pnpm build:swc",
-    "build:debug": "pnpm build",
-    "build:swc": "swc ./src -d ./dist --config-file .swcrc-build --strip-leading-paths",
-    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "build": "node init && pnpm build:types && pnpm build:swc",
+    "build:debug": "node init && pnpm build",
+    "build:swc": "node init && swc ./src -d ./dist --config-file .swcrc-build --strip-leading-paths",
+    "build:types": "node init && tsc --emitDeclarationOnly --outDir dist",
     "clean": "rimraf -g {dist,*.tsbuildinfo}",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

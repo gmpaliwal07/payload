@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "astro build",
-    "dev": "astro dev",
+    "build": "node init && astro build",
+    "dev": "node init && astro dev",
     "preview": "astro preview"
   },
   "dependencies": {
